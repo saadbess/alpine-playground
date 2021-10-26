@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binding Example</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+<body>
+
+    <!-- Simple input binding -->
+    <div x-data="{ name: '' }">
+        <input type="text" x-model="name">
+        <span x-text="name.length"></span>
+    </div>
+
+    <!-- Form submission -->
+    <form x-data="{ name: '' }" x-on:submit.prevent="console.log(name)">
+        <input type="text" x-model="name">
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Example of 2 way data binding -->
+    <div 
+        x-data="{ 
+            name: '',
+            makeNameUpperCase () {
+                this.name = this.name.toUpperCase()
+            }
+        }"
+    >
+        <input type="text" x-model="name">
+        <span x-text="name"></span>
+        <button x-on:click="makeNameUpperCase">Uppercase</button>
+    </div>
+    
+</body>
+</html>
